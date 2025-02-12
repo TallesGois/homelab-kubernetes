@@ -2,11 +2,12 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: hello-world-nginx
+  namespace: development
+  name: nginx
   labels:
     app: nginx
 spec:
-  replicas: 2  # Número de réplicas (pods) desejadas
+  replicas: 2
   selector:
     matchLabels:
       app: nginx
@@ -24,10 +25,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: hello-world-nginx-service
+  name: nginx-service
 spec:
   selector:
-    app: hello-world-nginx
+    app: nginx
   ports:
     - protocol: TCP
       port: 80
